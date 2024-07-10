@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form To Email Using Javascript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img class="mySlides" src="connectWithUs.jpeg" height="200px" width="100%">
+    <img class="mySlides" src="connectWithUs5.webp" height="200px" width="100%">
+    <img class="mySlides" src="connectWithUs3.jpg" height="200px" width="100%">
+    <img class="mySlides" src="connectWithUs4.jpg" height="200px" width="100%">
+    <div class="container">
+        <form onsubmit="sendEmail(); reset();
+        return false;">
+            <h3>CONTACT FORM</h3>
+            <input type="text" id="name" placeholder="EnterYourName" required>
+            <input type="text" id="email" placeholder="EnterYourEmail" required>
+            <input type="number" id="PhNo" placeholder="EnterYourMobileNumber" required>
+            <textarea id="message" rows="4" placeholder="EnterMessage"></textarea>
+            <button type="submit" onclick="window.location.href = 'index1.html';">SendInfo</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+              Host : "smtp.elasticemail.com",
+              Username : "bhargavimahajan2814@gmail.com",
+              Password : "password",
+              To : 'bhargavimahajan99@gmail.com',
+              From : document.getElementById("email").value,
+              Subject : "New Contact Form Enquiry",
+              Body : "Name:" + document.getElementById("name").value
+              + "<br> Email: "+ document.getElementById("email").value
+              + "<br> Mobile No: "+ document.getElementById("PhNo").value 
+              + "<br> Message: "+ document.getElementById("message").value
+         }).then(
+           message => alert("Message sent Successfully")
+         );
+
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
